@@ -1,6 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Raleway:400,100,300,500,600,200,700,800,900);
 html, body{
-    font-family: 'Raleway', 'sans-serif';
+    font-family: 'Arial', 'sans-serif';
     font-size: 100%;
     background-color: #FFF;
 }
@@ -421,7 +421,7 @@ h3 {
 .about h2{
 	font-size: 2.2em;
 	font-weight: 900;
-	color: #4F6367;
+	color: #fff;
 	text-align: left;
 	margin: 0.8em 0 0.8em;
 }
@@ -1396,6 +1396,19 @@ p.m_5 {
 	color:#05A2C1;
 }
 /**********/
+.erweima{
+	position: fixed;
+	bottom: 50px;
+	right: 1%;
+	width: 80px;
+	height: 80px;
+	z-index: 999;
+	display: none;
+}
+.erweima img{
+	width: 80px;
+	height: 80px;
+}
 #toTop {
 	display: none;
 	text-decoration: none;

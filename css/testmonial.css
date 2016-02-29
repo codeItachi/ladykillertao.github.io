@@ -13,6 +13,7 @@
 	display:inline-block;
 	background:#CECECE;
 	border-radius:30em;
+  color: #FFF;
 }
 /*
 	Theme controls how everything looks in Gallery CSS.
@@ -26,8 +27,10 @@
   text-align: center;
 }
 .gallery .item span{
-	color: #107E97;
-	font-size: 6em;
+	color: #fff;
+	font-size:0.875em;
+  display: block;
+  text-align: center;
 }
 .left-quit{
 	text-align: left;
@@ -50,11 +53,12 @@
 .client-says{
 	color: #FFF;
 	font-weight: 100;
-	font-size: 0.875em;
+	font-size: 0.875em; 
 	margin: 0;
 	text-indent: 20px;
 	line-height: 1.5em;
 }
+
 .gallery .controls {
    position: absolute;
 	width: 100%;
