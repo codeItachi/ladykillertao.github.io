@@ -49,8 +49,19 @@
 			});
 		</script>
 		<!----//End-top-nav-script---->
+		<style>
+        #canvas{
+        	display: block;
+        	position: absolute;
+        	left:5%;
+        	top:50%;
+        	margin-top: -100px;
+        	z-index: 999;
+        }
+		</style>
 	</head>
 	<body>
+	
 		<!----start-container------>
 		<!----start-header---->
 		<div id="home" class="header scroll">
@@ -81,15 +92,118 @@
 		<!-----start-slider---->
 		<div class="slider">
 			<script src="js/responsiveslides.min.js"></script>
-			  <script>
-			    // You can also use "$(window).load(function() {"
-			    $(function () {
-			      // Slideshow 3
-			      $("#slider3").responsiveSlides({
-			        manualControls: '#slider3-pager',
-			      });
-			    });
-			  </script>
+			 <script>
+				    // You can also use "$(window).load(function() {"
+				    $(function () {
+				      // Slideshow 3
+				      $("#slider3").responsiveSlides({
+				        manualControls: '#slider3-pager',
+				      });
+				    });
+			 </script>
+			 <canvas width='200' height='200' id='canvas'></canvas>
+			 <script>
+			 	var canvas=document.querySelector("#canvas");
+				ctx=canvas.getContext('2d');
+
+				var drawClock=function(){
+					var d=new Date();
+					var s=d.getSeconds();
+					var m=d.getMinutes();
+					var h=d.getHours();
+					
+					ctx.clearRect(0,0,200,200);
+			    //保存一干净状态
+			    ctx.save();
+				//移动原点至圆心
+				ctx.translate(100,100);
+			    //表盘
+			    ctx.save();
+			    ctx.beginPath();
+			    ctx.lineWidth=8;
+			    ctx.strokeStyle='blue';
+			    ctx.arc(0,0,90,0,Math.PI*2);
+			    ctx.stroke();
+			    ctx.restore();
+			    
+			    //刻度
+			    ctx.save();
+			    ctx.beginPath();
+				ctx.lineCap='round';//圆角
+				for(var i=1;i<61;i++){
+					ctx.rotate(Math.PI/30);
+					ctx.beginPath();
+					if(i%5==0){
+						ctx.moveTo(68,0);
+						ctx.lineWidth=4;
+					}else{
+						ctx.moveTo(72,0);
+						ctx.lineWidth=2;
+					}
+					ctx.lineTo(78,0);
+					ctx.stroke();
+				}
+				ctx.restore();
+
+				
+				
+				
+			    //时针
+			    ctx.save();
+			    
+			    ctx.rotate(360*((h*3600+m*60+s)/(12*3600))/180*Math.PI);
+			    
+			    ctx.beginPath();
+			    ctx.lineCap='round';
+			    ctx.strokeStyle="black";
+			    ctx.lineWidth=4;
+			    ctx.moveTo(0,10);
+			    ctx.lineTo(0,-30);
+			    ctx.stroke();
+			    ctx.restore();
+			    
+
+			    //分针
+			    ctx.save();
+			    var min=((m*60+s)/3600)*360/180*Math.PI;
+			    ctx.rotate(min);
+			    ctx.beginPath();
+			    ctx.strokeStyle='orange';
+			    ctx.lineCap='round';
+			    ctx.lineWidth=4;
+			    ctx.moveTo(0,10);
+			    ctx.lineTo(0,-40);
+			    ctx.stroke();
+			    ctx.restore();
+
+				//秒针
+				ctx.save();
+				var sec=360*(s/60)/180*Math.PI;
+				ctx.rotate(sec);
+				ctx.beginPath();
+				// ctx.rotate(x);
+				ctx.strokeStyle='red';
+				ctx.lineCap='round';
+				ctx.lineWidth=2;
+				ctx.moveTo(0,10);
+				ctx.lineTo(0,-50);
+				ctx.moveTo(4,-54);
+				ctx.arc(0,-54,4,0,Math.PI*2);
+				ctx.moveTo(0,-58);
+				ctx.lineTo(0,-66)
+				ctx.stroke();
+				ctx.restore();
+
+				ctx.beginPath();
+				ctx.fillStyle='#f00';
+				ctx.arc(0,0,6,0,Math.PI*2);
+				ctx.fill();
+				//复原第一次的
+				ctx.restore();
+				requestAnimationFrame(drawClock);
+			}
+			requestAnimationFrame(drawClock);
+			 </script>
 			  	<!-- Slideshow -->
 			    <ul class="rslides" id="slider3">
 			      <li>
