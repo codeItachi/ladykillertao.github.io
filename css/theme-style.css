@@ -518,28 +518,28 @@ h3 {
 	width: 83px;
 	height: 83px;
 	display: inline-block;
-	background: url(../images/services-icons.png) no-repeat 0px 0px;
+	
 }
 .services-list li a span.service-icon{
-	background-position:0px 0px;
+	background: url(../image/bianping1.png) no-repeat;
 }
 .services-list li a span.service-icon1{
-	background-position: -154px 0px;
+	background: url(../image/bianping2.png) no-repeat 0px 0px;
 }
 .services-list li a span.service-icon2{
-	background-position: -316px 0px;
+	background: url(../image/bianping3.png) no-repeat 0px 0px;
 }
 .services-list li a span.service-icon3{
-	background-position: -475px 0px;
+	background: url(../image/bianping4.png) no-repeat 0px 0px;
 }
 .services-list li a span.service-icon4{
-	background-position: -635px 0px;
+	background: url(../image/2.5D1.png) no-repeat 0px 0px;
 }
 .services-list li a span.service-icon5{
-	background-position: -794px 0px;
+	background: url(../image/2.5D2.png) no-repeat 0px 0px;
 }
 .services-list li a span.service-icon6{
-	background-position: -953px 0px;
+	background: url(../image/2.5D3.png) no-repeat 0px 0px;
 }
 .services-list li a label{
 	display: block;
