@@ -28,7 +28,7 @@
 }
 .gallery .item span{
 	color: #fff;
-	font-size:0.875em;
+	font-size:1.2em;
   display: block;
   text-align: center;
 }
@@ -60,7 +60,7 @@
 }
 
 .gallery .controls {
-   position: absolute;
+  
 	width: 100%;
 	text-align: center;
 }

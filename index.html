@@ -9,56 +9,21 @@
 		 <!-- start-smoth-scrolling-->
 		<script type="text/javascript" src="js/move-top.js"></script>
 		<script type="text/javascript" src="js/easing.js"></script>
-		<script type="text/javascript">
-			jQuery(document).ready(function($) {
-				$(".scroll").click(function(event){		
-					event.preventDefault();
-					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-				});
-			});
-		</script>
+		<!-- <script src='js/jquery1.12.1.js'></script>
+		<script src="js/index.js"></script> -->
+		
 		<!---- start-smoth-scrolling---->
 		 <!-- Custom Theme files -->
 		<link href="css/theme-style.css" rel='stylesheet' type='text/css' />
    		 <!-- Custom Theme files -->
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-		</script>
-		<!----font-Awesome----->
-   		<link rel="stylesheet" href="fonts/css/font-awesome.min.css">
-   		<!----font-Awesome----->
-		<!----webfonts---->
+		
+	
 		<link href='http://fonts.googleapis.com/css?family=Raleway:400,100,300,500,600,200,700,800,900' rel='stylesheet' type='text/css'>
-		<!----//webfonts---->
-		<!----start-top-nav-script---->
-		<script>
-			$(function() {
-				var pull 		= $('#pull');
-					menu 		= $('nav ul');
-					menuHeight	= menu.height();
-				$(pull).on('click', function(e) {
-					e.preventDefault();
-					menu.slideToggle();
-				});
-				$(window).resize(function(){
-	        		var w = $(window).width();
-	        		if(w > 320 && menu.is(':hidden')) {
-	        			menu.removeAttr('style');
-	        		}
-	    		});
-			});
-		</script>
+	
+		
 		<!----//End-top-nav-script---->
-		<style>
-        #canvas{
-        	display: block;
-        	position: absolute;
-        	left:5%;
-        	top:50%;
-        	margin-top: -100px;
-        	z-index: 999;
-        }
-		</style>
+	
 	</head>
 	<body>
 	
@@ -68,7 +33,7 @@
 			<div class="container">
 				<!---- start-logo---->
 				<div class="logo">
-					<a href="#"><img src="image/pjt.png" title="pjt agency" /></a>
+					<a href="#"><img src="image/logo.png" title="pjt agency" /></a>
 				</div>
 				<!---- //End-logo---->
 				<!----start-top-nav---->
@@ -79,10 +44,10 @@
 						<li class="page-scroll"><a href="#services" class="scroll">My Skills</a></li>
 						<li class="page-scroll"><a href="#port" class="scroll">My Works</a></li>
 						
-						<li class="page-scroll"><a href="#team" class="scroll">Team</a></li>
+						<li class="page-scroll"><a href="#team" class="scroll">Icons</a></li>
 						<li class="page-scroll"><a href="#contact" class="scroll">Contact</a></li>
 					</ul>
-					<a href="#" id="pull"><img src="images/nav-icon.png" title="menu" /></a>
+					<a href="#" id="pull"><!-- <img src="images/nav-icon.png" title="menu" /> --></a>
 				</nav>
 				<div class="clearfix"> </div>
 				<!----//End-top-nav---->
@@ -101,135 +66,46 @@
 				      });
 				    });
 			 </script>
-			 <canvas width='200' height='200' id='canvas'></canvas>
-			 <script>
-			 	var canvas=document.querySelector("#canvas");
-				ctx=canvas.getContext('2d');
-
-				var drawClock=function(){
-					var d=new Date();
-					var s=d.getSeconds();
-					var m=d.getMinutes();
-					var h=d.getHours();
-					
-					ctx.clearRect(0,0,200,200);
-			    //保存一干净状态
-			    ctx.save();
-				//移动原点至圆心
-				ctx.translate(100,100);
-			    //表盘
-			    ctx.save();
-			    ctx.beginPath();
-			    ctx.lineWidth=8;
-			    ctx.strokeStyle='blue';
-			    ctx.arc(0,0,90,0,Math.PI*2);
-			    ctx.stroke();
-			    ctx.restore();
-			    
-			    //刻度
-			    ctx.save();
-			    ctx.beginPath();
-				ctx.lineCap='round';//圆角
-				for(var i=1;i<61;i++){
-					ctx.rotate(Math.PI/30);
-					ctx.beginPath();
-					if(i%5==0){
-						ctx.moveTo(68,0);
-						ctx.lineWidth=4;
-					}else{
-						ctx.moveTo(72,0);
-						ctx.lineWidth=2;
-					}
-					ctx.lineTo(78,0);
-					ctx.stroke();
-				}
-				ctx.restore();
-
-				
-				
-				
-			    //时针
-			    ctx.save();
-			    
-			    ctx.rotate(360*((h*3600+m*60+s)/(12*3600))/180*Math.PI);
-			    
-			    ctx.beginPath();
-			    ctx.lineCap='round';
-			    ctx.strokeStyle="black";
-			    ctx.lineWidth=4;
-			    ctx.moveTo(0,10);
-			    ctx.lineTo(0,-30);
-			    ctx.stroke();
-			    ctx.restore();
-			    
-
-			    //分针
-			    ctx.save();
-			    var min=((m*60+s)/3600)*360/180*Math.PI;
-			    ctx.rotate(min);
-			    ctx.beginPath();
-			    ctx.strokeStyle='orange';
-			    ctx.lineCap='round';
-			    ctx.lineWidth=4;
-			    ctx.moveTo(0,10);
-			    ctx.lineTo(0,-40);
-			    ctx.stroke();
-			    ctx.restore();
-
-				//秒针
-				ctx.save();
-				var sec=360*(s/60)/180*Math.PI;
-				ctx.rotate(sec);
-				ctx.beginPath();
-				// ctx.rotate(x);
-				ctx.strokeStyle='red';
-				ctx.lineCap='round';
-				ctx.lineWidth=2;
-				ctx.moveTo(0,10);
-				ctx.lineTo(0,-50);
-				ctx.moveTo(4,-54);
-				ctx.arc(0,-54,4,0,Math.PI*2);
-				ctx.moveTo(0,-58);
-				ctx.lineTo(0,-66)
-				ctx.stroke();
-				ctx.restore();
-
-				ctx.beginPath();
-				ctx.fillStyle='#f00';
-				ctx.arc(0,0,6,0,Math.PI*2);
-				ctx.fill();
-				//复原第一次的
-				ctx.restore();
-				requestAnimationFrame(drawClock);
-			}
-			requestAnimationFrame(drawClock);
-			 </script>
+			
+			
 			  	<!-- Slideshow -->
 			    <ul class="rslides" id="slider3">
 			      <li>
 			      	<img src="images/slider-img1.jpg" alt="">
 			      	<div class="slid-info">
 			      		<h1>Hello Baby！</h1>
+
+			      		<p>Welcome to my world！</p>
+			      		<p>I'm Peng Jiang Tao</p>
 			      		<p>欢迎来到我的世界！</p>
-			      		
+			      		<p>我叫彭江涛</p>
+			      		<span class="submit-btn"><a href="http://ladykillertao.github.io/jianli/"><input type="submit" value="详情"></a></span>
 			      	</div>
 			      </li>
 			      <li><img src="images/slider-img2.jpg" alt="">
 			      	<div class="slid-info">
-			      		<h1>短歌行！</h1>	
-			      		<p>
-			      		对酒当歌,人生几何！譬如朝露,去日苦多.
-			      		慨当以慷,忧思难忘.何以解忧？唯有杜康.
-			      		青青子衿,悠悠我心.但为君故,沉吟至今.
-						呦呦鹿鸣,食野之苹.我有嘉宾,鼓瑟吹笙.
-						</p>
-			      	</div>
+			      		<h1>Hello Baby！</h1>
+			      		<p>Age:<span>24</span></p>
+						
+			      		<p>Phone:<span>18335830798</span></p>
+						
+						<p>Email:<span>pjt463517705@163.com</span></p>
+						<span class="submit-btn"><a href="http://ladykillertao.github.io/jianli/"><input type="submit" value="详情"></a></span>
+			      	</div>	
 			      </li>
-			      <li><img src="images/slider-img1.jpg" alt="">
+			      <li>
+			      <img src="images/slider-img1.jpg" alt="">
 			      	<div class="slid-info">
-			      		<h1>满江红！</h1>
-			      		<p>怒发冲冠,凭阑处、潇潇雨歇.抬望眼、仰天长啸,壮怀激烈.三十功名尘与土,八千里路云和月.莫等闲,白了少年头,空悲切.</p>
+			      		<h1>Hello Baby！</h1>
+                        <p>毕业背景:</p>
+			      		<span>2011.9--2015.6</span>
+			      		<span>吕梁学院</span>
+			      		<span>电子信息工程（本科）</span>
+			      		<p>求职意向:</p>
+			      		<span>前端工程师</span>
+			      		<span class="submit-btn"><a href="http://ladykillertao.github.io/jianli/"><input type="submit" value="详情"></a></span>
 			      	</div>
+			      	
 			      </li>
 			    </ul>
 			    <!-- Slideshow -->
@@ -243,17 +119,17 @@
 		<!--start-about-->
 		<div id="about" class="about testmonials">
 			<div class="container">
-				<h2>About Me</h2>
+				<h2>About Me/关于我</h2>
 				
 			
 	         	<div class="container">
 		         	<div class="client-pic col-md-4">
-		         		<img src="image/pjt.jpg" title="name" />
+		         		<img src="" alt="">
 		         	</div>
 		         	<div class="client-sys col-md-8">
 		         		<!----start-testmonial-slider---->
 		         		<link rel="stylesheet" href="css/testmonial.css">
-	  					<script src="js/prefixfree.min.js"></script>
+	  					<!-- <script src="js/prefixfree.min.js"></script> -->
 		         		<!----//End-testmonial-slider---->
 		         		<div class="gallery autoplay items-3">
 						    <div id="item-1" class="control-operator"></div>
@@ -269,27 +145,27 @@
 						    <figure class="item">
 						      <h3>技能介绍 :</h3>
 						     <p class="client-says">
-						     <span>精通HTML丶CSS丶JavaScript丶CSS3丶HTML5技术</span>
+						     <span>精通HTML、CSS、JavaScript、CSS3、HTML5技术</span>
 						     <span>具备处理浏览器兼容问题的能力;</span>
-						     <span>熟练掌握PS丶AI等图形软件;</span>
+						     <span>熟练掌握PS、AI等图形软件;</span>
 						     
 						     <span>能够实现响应式布局.</span>
 						     </p>
 						    </figure>
 						    <figure class="item">
 						      <h3>工作经历 :</h3>
-						      <p class="client-says"><span>2015.10-2016.05 山西易众电子商务有限公司,任职Web前端工程师;</span>
-						      <span>独自完成小米丶天猫丶一号店布局及其动效;</span>  
-						      <span>独自完成apple网站整体设计;</span>
+						      <p class="client-says"><span>2015.1-2016.3 山西硬汉科技有限公司,任职Web前端工程师;</span>
+						      <span>独立完成一些电商网站的布局及其动效;</span>  
+						      <span>独立完成apple网站设计;</span>
 						      <span>参与金桥双语整站的设计. </span>
 						      </p>
 						    </figure>
 						    <div class="clearfix"> </div>
-						    <div class="controls">
+						   <!--  <div class="controls">
 						      <a href="#item-1" class="control-button"><span> </span></a>
 						      <a href="#item-2" class="control-button"><span> </span></a>
 						      <a href="#item-3" class="control-button"><span> </span></a>
-						    </div>
+						    </div> -->
 						    <div class="clearfix"> </div>
 					  </div>
 		         	</div>
@@ -304,33 +180,91 @@
 		<!--start-services-->
 		<div id="services" class="services">
 			<div class="container">
-				<h3>Services<label> </label></h3>
-			<!----start-servicves-list---->
-			<div class="services-list text-center">
-				<ul class="list-unstyled list-inline">
-					<li>
-						<a href="#"><span class="service-icon"></span><label>Mobile</label></a>
-					</li>
-					<li>
-						<a href="#"><span class="service-icon1"> </span><label>Design</label></a>
-					</li>
-					<li>
-						<a href="#"><span class="service-icon2"> </span><label>Social</label></a>
-					</li>
-					<li>
-						<a href="#"><span class="service-icon3"> </span><label>E-commerce</label></a>
-					</li>
-					<li>
-						<a href="#"><span class="service-icon4"> </span><label>Database</label></a>
-					</li>
-					<li>
-						<a href="#"><span class="service-icon5"> </span><label>Communications</label></a>
-					</li>
-					<li>
-						<a href="#"><span class="service-icon6"> </span><label>Technology</label></a>
-					</li>
-				</ul>
-			</div>
+				<h3>My Skills/我的技能<label> </label></h3>
+			<!----start-servicves-list-->
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="skills">
+						<div class="title">
+							<span>HTML</span><span>95%</span>
+						</div>
+
+						<div class="skill one">
+							<span style='width:95%'></span>
+						</div>
+					</div>
+					
+					<div class="skills">
+						<div class="title">
+							<span>CSS</span><span>95%</span>
+						</div>
+
+						<div class="skill one">
+							<span style='width:95%'></span>
+						</div>
+					</div>
+					<div class="skills">
+						<div class="title">
+							<span>HTML5</span><span>90%</span>
+						</div>
+
+						<div class="skill one">
+							<span style='width:90%'></span>
+						</div>
+					</div>
+					<div class="skills">
+						<div class="title">
+							<span>CSS3</span><span>90%</span>
+						</div>
+
+						<div class="skill one">
+							<span style='width:90%'></span>
+						</div>
+					</div>
+
+				</div>
+				<div class="col-lg-6">
+					<div class="skills">
+						<div class="title">
+							<span>JavaScript</span><span>90%</span>
+						</div>
+
+						
+						<div class="skill one">
+							<span style='width:90%'></span>
+						</div>
+					</div>
+					<div class="skills">
+						<div class="title">
+							<span>jQuery</span><span>85%</span>
+						</div>
+
+						
+						<div class="skill one">
+							<span style='width:90%'></span>
+						</div>
+					</div>
+					<div class="skills">
+						<div class="title">
+							<span>angular</span><span>85%</span>
+						</div>
+
+
+						<div class="skill one">
+							<span style='width:85%'></span>
+						</div>
+					</div>
+					<div class="skills">
+						<div class="title">
+							<span>Hybird</span><span>80%</span>
+						</div>
+
+
+						<div class="skill one">
+							<span style='width:80%'></span>
+						</div>
+					</div>
+			    </div>
 			<!----//End-servicves-list---->
 			</div>
 		</div>
@@ -338,7 +272,7 @@
 		<!--start-portfolio-->
 		<div id="port" class="portfolio portfolio-box">
 			<div class="container">
-				<h3>My Work<label> </label></h3>
+				<h3>My Works/我的作品<label> </label></h3>
 			<!----start-portfolio---->
          <div id="port" class="container portfolio-main">
 	        	<!-- start-portfolio-script-->
@@ -388,7 +322,7 @@
 						<li><span class="filter" data-filter="icon">Angular</span> /</li>
 						<li><span class="filter" data-filter="app">PRINT</span></li>
 					</ul>
-					<div id="portfoliolist">
+					<div id="portfoliolist" class="row">
 					<!-- 锤子 -->
 					    <div class="portfolio logo1 mix_all" data-cat="logo" style="display: inline-block; opacity: 1;">
 							<div class="portfolio-wrapper">		
@@ -429,7 +363,7 @@
 
 						<div class="portfolio icon mix_all" data-cat="icon" style="display: inline-block; opacity: 1;">
 							<div class="portfolio-wrapper">		
-								<a data-toggle="modal" data-target=".bs-example-modal-md" href="http://ladykillertao.github.io/sketch" class="b-link-stripe b-animate-go  thickbox">
+								<a data-toggle="modal" data-target=".bs-example-modal-md" href="http://ladykillertao.github.io/Mysketch" class="b-link-stripe b-animate-go  thickbox">
 							     <img class="p-img" src="image/sketch.png" /><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="images/link-ico.png" alt=""/></h2>
 							  	</div></a>
 			                </div>
@@ -499,6 +433,43 @@
 			                	<span>Game</span>
 			                </div>
 						</div>
+
+						<!-- 苹果 -->
+						<div class="portfolio card mix_all" data-cat="card" style="display: inline-block; opacity: 1;">
+							<div class="portfolio-wrapper">		
+								<a data-toggle="modal" data-target=".bs-example-modal-md" href="http://ladykillertao.github.io/apple" class="b-link-stripe b-animate-go  thickbox">
+							     <img class="p-img" src="image/apple2.jpg" /><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="images/link-ico.png" alt="" ></h2>
+							  	</div></a>
+			                </div>
+			                 <div class="port-info">
+			                	<h4><a href="#">APPLE</a></h4>
+			                	<span>Website</span>
+			                </div>
+						</div>
+						<!-- 优站精选 -->
+						<div class="portfolio card mix_all" data-cat="card" style="display: inline-block; opacity: 1;">
+							<div class="portfolio-wrapper">		
+								<a data-toggle="modal" data-target=".bs-example-modal-md" href="http://ladykillertao.github.io/bootcss" class="b-link-stripe b-animate-go  thickbox">
+							     <img class="p-img" src="image/bootstrap.jpg" /><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="images/link-ico.png" alt="" ></h2>
+							  	</div></a>
+			                </div>
+			                 <div class="port-info">
+			                	<h4><a href="#">Bootstrap</a></h4>
+			                	<span>Website</span>
+			                </div>
+						</div>
+						<!-- 扫雷 -->
+						<div class="portfolio card mix_all" data-cat="card" style="display: inline-block; opacity: 1;">
+							<div class="portfolio-wrapper">		
+								<a data-toggle="modal" data-target=".bs-example-modal-md" href="http://ladykillertao.github.io/sweep" class="b-link-stripe b-animate-go  thickbox">
+							     <img class="p-img" src="image/sweep.jpg" /><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="images/link-ico.png" alt="" ></h2>
+							  	</div></a>
+			                </div>
+			                 <div class="port-info">
+			                	<h4><a href="#">Sweep</a></h4>
+			                	<span>Game</span>
+			                </div>
+						</div>
 						<div class="clearfix"> </div>	
 						<a class="more-ports text-center" href="#"><span> </span></a>																																				
 				</div>
@@ -514,39 +485,28 @@
 		<!--start-team-->
 		<div id="team" class="team">
 			<div class="container">
+			<h3>Icons/图标作品<label> </label></h3>
 				<div class="team-members text-center">
 					<div class="col-md-4 team-member">
 						<a class="member-pic" href="#"><img src="image/niwu.png" title="member-name" /></a>
-						<h3><a href="#">Bruce Wayne</a></h3>
-						<span>Designer</span>
-						<p>vel egestas diam dui nec mauris. Sed tincidunt felis at feugiat euismod. Praesent lacinia posuere massa. Proin quis purus in neque aliquam .</p>
-						<ul class="list-unstyled list-inline social-icons">
-							<li><a href="#"><i class="fa fa-twitter"> </i></a></li>
-							<li><a href="#"><i class="fa fa-facebook"> </i></a></li>
-							<li><a href="#"><i class="fa fa-dribbble"> </i> </a></li>
-						</ul>
+						<h3><a href="#"></a></h3>
+						<span>Video </span>
+						
+						
 					</div>
 					<div class="col-md-4 team-member">
 						<a class="member-pic" href="#"><img src="image/lowpoly.png" title="member-name" /></a>
-						<h3><a href="#">Bruce Wayne</a></h3>
-						<span>Designer</span>
-						<p>vel egestas diam dui nec mauris. Sed tincidunt felis at feugiat euismod. Praesent lacinia posuere massa. Proin quis purus in neque aliquam .</p>
-						<ul class="list-unstyled list-inline social-icons">
-							<li><a href="#"><i class="fa fa-twitter"> </i></a></li>
-							<li><a href="#"><i class="fa fa-facebook"> </i></a></li>
-							<li><a href="#"><i class="fa fa-dribbble"> </i> </a></li>
-						</ul>
+						<h3><a href="#"></a></h3>
+						<span>Low poly</span>
+						
+						
 					</div>
 					<div class="col-md-4 team-member">
 						<a class="member-pic" href="#"><img src="image/niwu2.png" title="member-name" /></a>
-						<h3><a href="#">Bruce Wayne</a></h3>
-						<span>Designer</span>
-						<p>vel egestas diam dui nec mauris. Sed tincidunt felis at feugiat euismod. Praesent lacinia posuere massa. Proin quis purus in neque aliquam .</p>
-						<ul class="list-unstyled list-inline social-icons">
-							<li><a href="#"><i class="fa fa-twitter"> </i></a></li>
-							<li><a href="#"><i class="fa fa-facebook"> </i></a></li>
-							<li><a href="#"><i class="fa fa-dribbble"> </i> </a></li>
-						</ul>
+						<h3><a href="#"></a></h3>
+						<span>Camera</span>
+						
+						
 					</div>
 				</div>
 			</div>
@@ -555,39 +515,9 @@
 		<!--start-brand-carsuals-->
 		<script type="text/javascript" src="js/jquery.flexisel.js"></script>
 		<div class="brand-carsuals">
-			<ul id="flexiselDemo3">
-			    <li><img src="image/bianping1.png" /></li>
-			    <li><img src="image/bianping2.png" /></li>
-			    <li><img src="image/bianping3.png" /></li>
-			    <li><img src="image/bianping4.png" /></li>                                                 
-			</ul>   
-			<script type="text/javascript">
-				$(window).load(function() {
-				    $("#flexiselDemo3").flexisel({
-				        visibleItems: 5,
-				        animationSpeed: 1000,
-				        autoPlay: true,
-				        autoPlaySpeed: 3000,            
-				        pauseOnHover: true,
-				        enableResponsiveBreakpoints: true,
-				        responsiveBreakpoints: { 
-				            portrait: { 
-				                changePoint:480,
-				                visibleItems: 1
-				            }, 
-				            landscape: { 
-				                changePoint:640,
-				                visibleItems: 2
-				            },
-				            tablet: { 
-				                changePoint:768,
-				                visibleItems: 3
-				            }
-				        }
-				    });
-				    
-				});
-			</script>
+			<div class="lunbo">
+				
+			</div>
 		</div>
 		<!--//End-brand-carsuals-->
 		
@@ -602,25 +532,25 @@
 							<input type="text" value="Email" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Email';}">
 							<input type="text" value="Subject" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Subject';}">
 							<textarea onFocus="if(this.value == 'Your Message here....') this.value='';" onBlur="if(this.value == '') this.value='Your Message here....;">Your Message here....</textarea>
-							<p class="conditions"> <span>*</span>scelerisque sit amet felis sit nunc.</p>
-							<span class="submit-btn"><input type="submit" value="Send"></span>
+							
+							
 						</form>
 					</div>
-					<div class="col-md-6 contact-grid-right">
-						<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3146627.8634626623!2d-96.59883788421166!3d39.629933318909686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1399976101005" > </iframe>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus laoreet turpis a nibh feugiat, nec viverra arcu lacinia.</p>
-						<div class="col-md-4">
-							<h5>Phone</h5>
+					<div class="col-md-6 contact-grid-right" >
+						
+						<div class="col-md-12">
+						    <h4>Name</h4>
+						    <span>彭江涛</span>
+							<h4>Phone</h4>
 							<span>18335830798</span>
 						</div>
-						<div class="col-md-4">
-							<h5>Address</h5>
-							<span>2014 Street,</span>
-							<span>San francisco California,</span>
-							<span>United States,</span>
+						<div class="col-md-12">
+							<h4>Address</h4>
+							<span>2016 深圳</span>
+							
 						</div>
-						<div class="col-md-4">
-							<h5>Email</h5>
+						<div class="col-md-12">
+							<h4>Email</h4>
 							<span><a href="#">pjt463517705@163.com</a></span>
 						</div>
 						<div class="clearfix"> </div>
@@ -638,41 +568,34 @@
 				<!-----//End-contact-social---->
 		</div>
 		</div>
+
 		<!--//End-contact-->
 		<!--start-copy-right-->
-		<div class="copy-right">
-			<div class="container">
-				<p>Copyright &copy; 2014.Company name All rights reserved.<a target="_blank" href="http://www.cssmoban.com/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
-			<script type="text/javascript">
-				$(document).ready(function() {
-					/*
-					var defaults = {
-			  			containerID: 'toTop', // fading element id
-						containerHoverID: 'toTopHover', // fading element hover id
-						scrollSpeed: 1200,
-						easingType: 'linear' 
-			 		};
-					*/
-					
-					$("#toTop").UItoTop({ easingType: 'easeOutQuart' });
-					
-				});
-			</script>
-			<div class="erweima">
+		<div class="erweima">
 				<img src="./image/erweima.png" alt="">
 			</div>
 				<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 			</div>
-			<script >
+		
+		<!--//End-copy-right->
+		<!--//End-container-->
+
+</body>
+	<script>
 				$("#toTop").hover(function(){
 					$(".erweima").css("display","block");
 				},function(){
 					$(".erweima").css("display","none")
 				})
 			</script>
-		</div>
-		<!--//End-copy-right->
-		<!--//End-container-->
+<script>
 
-</body>
+	$(function(){
+		
+		if($('#services').scrollTop){
+			$('.skill').find('span').animate({opacity:1,left:0},500,'linear')
+		}
+		
+	})
+</script>
 </html>
