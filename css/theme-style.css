@@ -3,7 +3,7 @@ html, body{
     font-family: 'Arial', 'sans-serif';
     font-size: 100%;
     background-color: #FFF;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 body a{
 	transition:0.5s all;
